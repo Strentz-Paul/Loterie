@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LotoRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,14 +25,21 @@ class Loto
     private $date;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\OneToMany(targetEntity=Numbers::class, mappedBy="tirage")
      */
     private $numbers;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\OneToMany(targetEntity=Stars::class, mappedBy="tirage")
      */
-    private $Chance;
+    private $stars;
+
+    public function __construct()
+    {
+        $this->numbers = new ArrayCollection();
+        $this->stars = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -49,26 +58,64 @@ class Loto
         return $this;
     }
 
-    public function getNumbers(): ?int
+    /**
+     * @return Collection|Numbers[]
+     */
+    public function getNumbers(): Collection
     {
         return $this->numbers;
     }
 
-    public function setNumbers(int $numbers): self
+    public function addNumber(Numbers $number): self
     {
-        $this->numbers = $numbers;
+        if (!$this->numbers->contains($number)) {
+            $this->numbers[] = $number;
+            $number->setTirage($this);
+        }
 
         return $this;
     }
 
-    public function getChance(): ?int
+    public function removeNumber(Numbers $number): self
     {
-        return $this->Chance;
+        if ($this->numbers->contains($number)) {
+            $this->numbers->removeElement($number);
+            // set the owning side to null (unless already changed)
+            if ($number->getTirage() === $this) {
+                $number->setTirage(null);
+            }
+        }
+
+        return $this;
     }
 
-    public function setChance(int $Chance): self
+    /**
+     * @return Collection|Stars[]
+     */
+    public function getStars(): Collection
     {
-        $this->Chance = $Chance;
+        return $this->stars;
+    }
+
+    public function addStar(Stars $star): self
+    {
+        if (!$this->stars->contains($star)) {
+            $this->stars[] = $star;
+            $star->setTirage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStar(Stars $star): self
+    {
+        if ($this->stars->contains($star)) {
+            $this->stars->removeElement($star);
+            // set the owning side to null (unless already changed)
+            if ($star->getTirage() === $this) {
+                $star->setTirage(null);
+            }
+        }
 
         return $this;
     }

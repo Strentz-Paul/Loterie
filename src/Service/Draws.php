@@ -146,22 +146,4 @@ class Draws
         }
         return $allNumber;
     }
-
-//    public function finalResult(int $numberOfDraw, int $nbTotalChoice, int $nbToDraw )
-//    {
-//    }
-
-//
-//    public function numberOfDrawNumBack(int $number, int $nbTotalChoice, int $nbToDraw): array
-//    {
-//        $arrayResult = [];
-//        for ( $i = 0 ; $i < $number ; $i++) {
-//            $completeResultNum = $this->randomize($nbTotalChoice, $nbToDraw);
-//            array_push($arrayResult, $completeResultNum);
-//        }
-//
-//        return $arrayResult;
-//    }
-
-
 }
