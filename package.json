@@ -16,6 +16,9 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "sass-loader": "^8.0.2"
+        "@fortawesome/fontawesome-free": "^5.14.0",
+        "chart.js": "^2.9.3",
+        "sass-loader": "^8.0.2",
+        "vanilla-tilt": "^1.7.0"
     }
 }
