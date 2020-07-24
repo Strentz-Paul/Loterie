@@ -1,5 +1,4 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Paul Strentz{% endblock %}
 
 {% block body %}
@@ -11,7 +10,37 @@
     <div class="barre_six"></div>
     <div class="barre_sept">
         <ul class="contact_all">
-            <a><li><i class="fas fa-envelope contact_item"></i></li></a>
+            <a href="#Contact" title="Me contacter" alt="Me contacter" role="button" data-toggle="modal">
+                <li><i class="fas fa-envelope contact_item"></i></li>
+            </a>
+
+            <div class="modal fade" id="Contact" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-full" role="document">
+                    <div class="modal-content-contact">
+                        <div class="close_button">
+                            <button type="button" class="close-game" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class=" modal-content modal_contact_content" id="contact_content">
+                            <div class="contactContainer">
+                                <h2 class="title_contact">Me contacter</h2>
+                                {{ form_start(form) }}
+                                <div class="row">
+                                    <div class="col">{{ form_row(form.firstname) }}</div>
+                                    <div class="col">{{ form_row(form.lastname) }}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">{{ form_row(form.email) }}</div>
+                                </div>
+                                {{ form_rest(form) }}
+                                <button type="submit" class="btn custom_button_contact">Envoyer</button>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <a href="https://github.com/Strentz-Paul" title="GitHub/Strentz-Paul" alt="GitHub/Strentz-Paul" target="_blank"><li><i class="fab fa-github contact_item"></i></li></a>
             <a href="https://www.linkedin.com/in/paul-strentz/" title="LinkedIn/Paul-Strentz" alt="LinkedIn/Paul-Strentz" target="_blank"><li><i class="fab fa-linkedin contact_item"></i></li></a>
         </ul>
@@ -20,33 +49,273 @@
     <div class="barre_neuf"></div>
     <div class="barre_dix"></div>
     <div class="barre_onze"></div>
-    <div class="container_un"></div>
-    <div class="container_deux"></div>
+    <div class="barre_douze"></div>
+    <div class="container_un" onmouseover="playershow()" onmouseout="playerhide()">
+        <iframe allow="autoplay *; encrypted-media *;" frameborder="" height="300" id="player_apple" class="player_apple animate__animated hidden_player" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/fr/playlist/poupie-%C3%A7a-nous-d%C3%A9range-ep/pl.u-DdpoFLl91xX"></iframe>
+    </div>
+    <a href="#Menu" role="button" data-toggle="modal">
+        <div class="container_deux" onmouseover="show()" onmouseout="hide()">
+            <div class="menu">
+                <h2 id="text_menu" class="text_menu animate__animated ">MENU</h2>
+            </div>
+            <div class="menu">
+                <div id="burger_top" class="burger_top animate__animated "></div>
+                <div id="burger_center" class="burger_center animate__animated "></div>
+                <div id="burger_bottom" class="burger_bottom animate__animated "></div>
+            </div>
+        </div>
+    </a>
+    <div class="modal fade" id="Menu" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-full" role="document">
+            <div class="modal_content_menu">
+                <div class="close_button">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-content menu_content" id="menu_content">
+                    <h2 class="text_menu_modal">MENU</h2>
+                    <div class="list_menu_item">
+                        <ul>
+                            <a href="#Loterie" role="button" data-toggle="modal" data-dismiss="modal">
+                                <li class="menu_item menu_contact">Simuloto <span class="projet_complement">Projet</span></li>
+                            </a>
+                            <a href="#Diwyt" role="button" data-toggle="modal" data-dismiss="modal">
+                                <li class="menu_item menu_contact">Diwyt <span class="projet_complement">Projet</span></li>
+                            </a>
+                            <a href="#Game" role="button" data-toggle="modal" data-dismiss="modal">
+                                <li class="menu_item menu_game">Start game</li>
+                            </a>
+                            <a href="#Contact" role="button" data-toggle="modal" data-dismiss="modal">
+                                <li class="menu_item menu_contact">Me contacter</li>
+                            </a>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container_trois">
         <h1 class="title_site col-2">Paul Strentz</h1>
         <p class="hint offset-3 col-9 ">*Click and explore colors*</p>
     </div>
     <div class="container_quatre">
-        <div class="text_box_4"><p>Je suis un text Je suis un text Je suis un text </p><button class="btn btn-primary button_voir_plus">Voir plus</button></div>
+        <img class="logo_loterie" src="{{ asset('build/img/Simuloto_white.png') }}" alt="Logo de l'application de simulation de loterie">
+        <div class="text_box_4">
+            <h3 class="title_box_4">Simuloto</h3>
+            <p>Application de Simulation de tirage de loterie.</p>
+            <a href="#Loterie" role="button" data-toggle="modal" class="loterie_container_text">
+                <button class="btn btn-primary button_voir_plus_loto">Voir plus</button>
+            </a>
+        </div>
     </div>
-    <div class="container_cinq"></div>
+
+        <div class="modal fade" id="Loterie" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-full" role="document">
+                <div class="modal-content-loterie">
+                    <div class="close_button">
+                        <button type="button" class="close-game" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="cross">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-content" id="loterie_modal">
+                        <div class="loterie_content">
+                            <h2 class="title_loto">Simuloto</h2>
+                            <div class="content_1_loto">
+                                <img class="logo_loterie_text"
+                                     src="{{ asset('build/img/Simuloto_white.png') }}"
+                                     alt="Logo de l'application de simulation de loterie">
+                                <div class="text_loto"><strong class="shadow_simuloto">Simuloto</strong>
+                                    est une application de simulation de tirage de loterie.
+                                    À l'état actuel du développement de l'application il est possible de choisir
+                                    le nombre total de numéro, le nombre de numéro à tirer ainsi
+                                    que le nombre de numéro chance à tirer.
+                                </div>
+                            </div>
+                            <div class="content_2_loto text_loto">
+                                Voici un exemple de l'utilisation de l'application.
+                                </br>
+                                Dans l'exemple nous reprenons le Patern d'un tirage du loto de la FDJ.
+                                </br>
+                                Une grille de loto comprend <strong class="shadow_simuloto">49</strong> numéros et
+                                <strong class="shadow_simuloto">10</strong> numéros chance. Un tirage comprend
+                                <strong class="shadow_simuloto">5</strong> numéros et
+                                <strong class="shadow_simuloto">1</strong> numéro chance.
+                                </br>
+                                Voici le résultat de <strong class="shadow_simuloto">16</strong> tirages.
+                            </div>
+                            <div class="content_3_loto text_loto">
+                                <div class="row">
+                                    {% for result in loto %}
+                                        <div class="col-3">{{ result }}</div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="content_4_loto text_loto">
+                                <div class="complement_logo">
+                                    Cette application est réalisé en <strong class="shadow_simuloto">PHP</strong>
+                                    avec le framework <strong class="shadow_simuloto">Symfony</strong>.
+                                </div>
+                                <div class="button_loto">
+                                    <a href="{{ path('loto_index') }}" title="essayer l'application">
+                                        <button class="btn button_content_loto">Essayer l'application</button>
+                                    </a>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="container_cinq">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <p class="copyright"> © Paul STRENTZ<br><span class="inspired"> Inspired by Pieter Cornelis Mondriaan</span></p>
+    </div>
     <div class="container_six"></div>
     <div class="container_sept"></div>
     <div class="container_huit">
-        <div class="text_box_8"><p>Je suis un text Je suis un text Je suis un text </p><button class="btn btn-primary button_voir_plus">Voir plus</button></div>
+        <img class="logo_diwyt" src="{{ asset('build/img/DIWYT.png') }}" alt="Logo de l'application Do i waste your time">
+        <div class="text_box_8">
+            <h3 class="title_box_8">Do I Waste Your Time</h3>
+            <p>Projet en cours de création</p>
+            <a href="#Diwyt" role="button" data-toggle="modal">
+                <button class="btn btn-primary button_voir_plus_diwyt">Voir plus</button>
+            </a>
+        </div>
+    </div>
+    <div class="modal fade" id="Diwyt" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-full" role="document">
+            <div class="modal-content-diwyt">
+                <div class="close_button">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="cross">×</span>
+                    </button>
+                </div>
+                <div class="modal-content" id="diwyt_modal">
+                    <div class="diwyt_content">
+                        <h2 class="title_Diwyt">DiWYT</h2>
+                        <div class="content_1_diwyt">
+                            <img class="logo_loterie_text"
+                                 src="{{ asset('build/img/DIWYT.png') }}"
+                                 alt="Logo de l'application Do I Waste Your Time">
+                            <div class="text_loto"><strong class="shadow_diwyt">DiWYT</strong>
+                                est une application de visionnage de contenu. <br>
+                                En cours de développement...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="container_neuf"></div>
     <div class="container_dix"></div>
-    <div class="container_dix_prime"></div>
-    <div class="container_onze"></div>
+    <div class="container_dix_prime">
+        <div class="align_text_game">
+            <a href="#Game" role="button" data-toggle="modal" class="game_container_text">Play Game</a>
+        </div>
+        <div class="modal fade" id="Game" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-full" role="document">
+                <div class="modal-content-game">
+                    <div class="close_button">
+                        <button type="button" class="close-game" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="cross">×</span>
+                        </button>
+                    </div>
+                    <div class="modal_game_content">
+                        <div class="game_hint">
+                            <h2>Use arrow key to move</h2>
+                            <p class="hint_text">
+                                Press
+                                <img src="{{ asset("build/img/left-arrow-key.png")}}"
+                                     alt="Left arrow key"
+                                     class="arrow_keys">
+                                to go on left
+                            </p>
+                            <p class="hint_text">
+                                Press
+                                <img src="{{ asset("build/img/right-arrow-key.png")}}"
+                                     alt="Right arrow key"
+                                     class="arrow_keys">
+                                to go on right
+                            </p>
+                        </div>
+                        <div class="game_content">
+                            <div id="game_canvas"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="container_onze">
+        <div class="quote_content">
+            <div class="quote_img">
+                <img src="{{ asset('build/img/booba.png') }}" alt="Booba" title="le duc de Boulogne">
+            </div>
+            <div class="quote">
+                <p id="quote_to_change">Bonjour morray, je change de punchline toutes les 5 secondes !</p>
+            </div>
+        </div>
+
+    </div>
     <div class="container_douze"></div>
     <div class="container_treize"></div>
-
 {#<div class="container-fluid">#}
 {#    <h1>Hello !! 👋 </h1>#}
 {#    <a class="btn btn-dark" href="{{ path('euromillion_draw') }}">Tirage de l'Euromillion Simulation</a>#}
 {#    <a class="btn btn-dark" href="{{ path('loto_draw') }}">Tirage du loto Simulation</a>#}
 {#</div>#}
+
 {% endblock %}
 {% block javascripts %}
+    {{ encore_entry_script_tags('quote') }}
+    <script>
+        let burger_top = document.getElementById("burger_top");
+        let burger_center = document.getElementById("burger_center");
+        let burger_bottom = document.getElementById("burger_bottom");
+        let text_menu = document.getElementById("text_menu");
+        let player = document.getElementById("player_apple");
+
+        function playershow() {
+            player.classList.remove('hidden_player');
+            player.classList.remove('animate__backOutUp');
+            player.classList.add('animate__backInDown');
+        }
+        function playerhide() {
+            player.classList.remove('hidden_player');
+            player.classList.remove('animate__backInDown');
+            player.classList.add('animate__backOutUp');
+        }
+
+        function show() {
+            burger_top.classList.remove("animate__slideOutRight");
+            burger_top.classList.add("animate__backInLeft");
+            burger_center.classList.remove("animate__slideOutLeft");
+            burger_center.classList.add("animate__backInRight");
+            burger_bottom.classList.remove("animate__slideOutRight");
+            burger_bottom.classList.add("animate__backInLeft");
+            text_menu.classList.remove("animate__slideOutUp")
+            text_menu.classList.add("animate__bounceInDown");
+
+        }
+        function hide() {
+            burger_top.classList.remove("animate__backInLeft")
+            burger_top.classList.add("animate__slideOutRight")
+            burger_center.classList.remove("animate__backInRight");
+            burger_center.classList.add("animate__slideOutLeft");
+            burger_bottom.classList.remove("animate__backInLeft");
+            burger_bottom.classList.add("animate__slideOutRight");
+            text_menu.classList.remove("animate__bounceInDown")
+            text_menu.classList.add("animate__slideOutUp");
+        }
+    </script>
+    {{ parent() }}
 {% endblock %}

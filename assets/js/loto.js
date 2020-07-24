@@ -6,7 +6,7 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import '../scss/app.scss';
+import '../scss/loto.scss';
 
 import 'bootstrap';
 require('@fortawesome/fontawesome-free/css/all.min.css');

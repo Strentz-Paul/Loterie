@@ -26,6 +26,7 @@
         "symfony/security-bundle": "*",
         "symfony/serializer-pack": "*",
         "symfony/string": "*",
+        "symfony/swiftmailer-bundle": "^3.4",
         "symfony/translation": "*",
         "symfony/twig-pack": "*",
         "symfony/validator": "*",

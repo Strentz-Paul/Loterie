@@ -17,7 +17,10 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.14.0",
+        "animate.css": "^4.1.0",
         "chart.js": "^2.9.3",
+        "jquery": "^3.5.1",
+        "popper.js": "^1.16.1",
         "sass-loader": "^8.0.2",
         "vanilla-tilt": "^1.7.0"
     }

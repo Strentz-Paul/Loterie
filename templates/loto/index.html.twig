@@ -1,11 +1,33 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_loto.html.twig' %}
 
 {% block title %}Hello LotoController!{% endblock %}
 
 {% block body %}
 
 
-<div class="container">
-    <h1 class="row col-12 container">Loto</h1>
+<div class="container_all_loto">
+    <h1 class="title_loto">Simuloto</h1>
+
+    <div class="container_form_loto container">
+        <div class="form_loto_display">
+            {{ form_start(form) }}
+            <div class="row">
+                <div class="col-6">{{ form_row(form.numberOfDraw) }}</div>
+            </div>
+            <div class="row">
+                <div class="col">{{ form_row(form.numberTotalOfNum) }}</div>
+                <div class="col">{{ form_row(form.nbToDraw) }}</div>
+            </div>
+            <div class="row">
+                <div class="col">{{ form_row(form.numberTotalOfChance) }}</div>
+                <div class="col">{{ form_row(form.numberTotalOfChanceToDraw) }}</div>
+            </div>
+            <div class="btn_to_flex">
+                <button type="submit" class="btn back_simuloto_form">Simuler</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
 </div>
 {% endblock %}

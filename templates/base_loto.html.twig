@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Simuloto{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('loto') }}
+    {% endblock %}
+</head>
+<body>
+<a href="{{ path('index') }}">
+    <button type="button" class="cross_close_back" >
+        <span aria-hidden="true">×</span>
+    </button>
+    <span class="popup">Retour à la page d'acceuil</span>
+</a>
+{% block body %}{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+</body>
+</html>
